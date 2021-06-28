@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ToDo App</title>
+	
+	<!-- Styling script -->
+
+	<style type="text/css">
+		h1{
+			line-height: 20px;
+			padding: 10px;
+			text-align: center;
+			background-color: #e6e6e6 ;
+
+		}
+		div{
+		margin-left: 40%;
+		margin-top:60px;	
+
+		}
+		input{
+			width: 20%;
+			padding: 12px 20px ;
+ 			margin: 8px 0;
+ 			border: 2px solid #c8c9cc;
+			border-radius: 16px;
+
+ 			
+		}
+		input:focus {
+ 		border: 3px solid #555;
+		}
+		button{
+			background-color: #e5e5e6;
+			color: black;
+			border: 2px solid #c8c9cc;
+			border-radius: 12px;
+			padding: 12px 20px;
+			margin-right: 40%;
+
+		}
+		button:hover{
+			  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+		}
+		ol{
+			padding: 20px;
+		}
+		ol li {
+			background: #d9d9d9;
+			padding: 5px;
+			margin-left: 20px;
+			margin-right: 60%;
+			}
+		
+	</style>
+	<!-- adding vue.js to our app-->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+	<h1>ToDo App</h1>
+	<div id="app">
+		
+		<!-- Take input from the user of the ToDo tasks -->
+		
+		<input type="text" name="task" id="input" v-model="newTask" placeholder="Enter ToDo Task">
+
+		<button id="button" v-on:click="addTask">Add ToDo</button>	
+		<!-- to display all ToDo  -->
+		<ol type="1" id="list">
+				<li v-for="task in tasks" >{{task}}</li>
+		</ol>
+	</div>
+
+	<script>
+
+		//Creating Vue app
+		
+		var app = new Vue({
+
+			el:'#app',
+			data: {
+				// list of the ToDo tasks
+				tasks : [
+						
+				]
+			},
+
+			methods:{
+				//function to add input Todo tasks
+				addTask() {
+					this.tasks.push(this.newTask);
+					this.newTask = '';
+				}
+			}
+
+		})
+	</script>
+
+</body>
+</html>
